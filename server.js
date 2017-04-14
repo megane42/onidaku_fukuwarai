@@ -11,51 +11,51 @@ var defaultPositions = JSON.stringify([
     },
     {
         target: 'nose',
-        params: { top: 163, left: 266, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 199, left: 278, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
     {
         target: 'mouth',
-        params: { top: 249, left: 261, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 270, left: 283, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
     {
         target: 'eye_l',
-        params: { top: 150, left: 312, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 179, left: 333, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
     {
         target: 'eye_r',
-        params: { top: 145, left: 203, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 175, left: 230, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
     {
         target: 'cheek_l',
-        params: { top: 199, left: 173, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 220, left: 212, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
     {
         target: 'cheek_r',
-        params: { top: 214, left: 326, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 227, left: 351, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
     {
         target: 'arm_l',
-        params: { top: 154, left: 429, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 217, left: 501, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
     {
         target: 'arm_r',
-        params: { top: 173, left: 6, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 228, left: 84, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
     {
         target: 'leg_l',
-        params: { top: 539, left: 342, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 630, left: 393, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
     {
         target: 'leg_r',
-        params: { top: 545, left: 219, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 644, left: 256, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
     {
         target: 'body',
-        params: { top: 85, left: 145, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 344, left: 294, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
     {
         target: 'head',
-        params: { top: 10, left: 134, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 181, left: 294, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     }
 ]);
 

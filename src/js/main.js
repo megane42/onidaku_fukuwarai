@@ -22,23 +22,20 @@ window.onload = function() {
         if (name != 'base') {
             ['moving', 'scaling', 'rotating'].forEach(function(event) {
                 img.on(event, function() {
-
+                    // 大きいパーツはクリックしても最前面に来ないようにする
                     if(name != 'base' && name != 'body' && name != 'head') {
                         img.bringToFront();
                     }
-
-                    console.log('===============');
-                    console.log(img.getLeft());
-                    console.log(img.getTop());
-
                     socket.emit('part_change', {
                         target: name,
                         params: {
-                            top    : img.getTop(),
-                            left   : img.getLeft(),
-                            angle  : img.getAngle(),
-                            scaleX : img.getScaleX(),
-                            scaleY : img.getScaleY()
+                            top     : img.getTop(),
+                            left    : img.getLeft(),
+                            angle   : img.getAngle(),
+                            scaleX  : img.getScaleX(),
+                            scaleY  : img.getScaleY(),
+                            originX : 'center',
+                            originY : 'center'
                         }
                     });
                 });
