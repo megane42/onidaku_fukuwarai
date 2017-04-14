@@ -4,7 +4,6 @@ window.onload = function() {
 
     var partsList = ['base', 'body', 'head', 'nose', 'mouth', 'eye_l', 'eye_r', 'cheek_l', 'cheek_r', 'arm_l', 'arm_r', 'leg_l', 'leg_r'];
     var parts = {};
-
     partsList.forEach(function(name) {
         var opt = {};
         if (name == 'base') {
@@ -23,7 +22,15 @@ window.onload = function() {
         if (name != 'base') {
             ['moving', 'scaling', 'rotating'].forEach(function(event) {
                 img.on(event, function() {
-                    img.bringToFront();
+
+                    if(name != 'base' && name != 'body' && name != 'head') {
+                        img.bringToFront();
+                    }
+
+                    console.log('===============');
+                    console.log(img.getLeft());
+                    console.log(img.getTop());
+
                     socket.emit('part_change', {
                         target: name,
                         params: {
@@ -46,7 +53,9 @@ window.onload = function() {
     socket.on('part_change', function(data){
         parts[data.target].set(data.params);
         parts[data.target].setCoords();
-        parts[data.target].bringToFront();
+        if(data.target != 'base' && data.target != 'body' && data.target != 'head') {
+            parts[data.target].bringToFront();
+        }
         canvas.renderAll();
     });
 
