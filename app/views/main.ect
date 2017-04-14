@@ -6,9 +6,14 @@
   <body class="bg">
     <% include "app/views/body" %>
 
+    <div>
+      <button type="button" id="reset_button">リセット</button>
+      <button type="button" id="snapshot_button">スナップショット</button>
+    </div>
+
     <% include "app/views/footer" %>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.min.js"></script>
-    <script type="text/javascript">var positions = <%- JSON.stringify(@positions) %></script>
-    <script src="/js/snapshot.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/main.min.js"></script>
   </body>
 </html>

@@ -120,15 +120,17 @@ io.on('connection', function(socket){
 
 // app 配下の静的ファイルをホスティング
 app.use(express.static('app'));
-app.get('/', function(req, res){
-  res.sendFile(__dirname + '/app/index.html');
-});
 
 // テンプレートエンジンの設定
 var ectRenderer = ECT({ watch: true, ext: '.ect' });
 app.set('views', 'app/views')
 app.set('view engine', 'ect')
 app.engine('ect', ectRenderer.render);
+
+// メイン画面のレンダリング
+app.get('/', function(req, res){
+    res.render("main", {});
+});
 
 // スナップショット画面のレンダリング
 app.get('/snapshot/:snapshot_id', function(req, res){
@@ -140,6 +142,5 @@ app.get('/snapshot/:snapshot_id', function(req, res){
         }
     });
 });
-
 
 http.listen(3000);
