@@ -1,0 +1,17 @@
+.bg {
+    background-color: #000033;
+    text-align: center;
+}
+
+.logo {
+    margin: 10px 10px;
+}
+
+#reset_button {
+    margin: 10px 0px;
+}
+
+.canvas-container {
+    display: block;
+    margin: 0 auto;
+}
