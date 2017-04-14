@@ -7,6 +7,7 @@ var uglify     = require('gulp-uglify');
 var plumber    = require('gulp-plumber');
 var concat     = require('gulp-concat');
 var css_minify = require('gulp-minify-css');
+var nodemon    = require('gulp-nodemon');
 
 gulp.task('browserify', function() {
   browserify('./src/js/main.js', { debug: true })
@@ -32,7 +33,9 @@ gulp.task('watch', function() {
 });
 
 gulp.task('server', function() {
-    require('./server');
+    nodemon({
+        script: './server.js'
+    });
 });
 
 gulp.task('default', ['browserify', 'css', 'watch', 'server']);
