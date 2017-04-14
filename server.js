@@ -11,43 +11,43 @@ var defaultPositions = JSON.stringify([
     },
     {
         target: 'nose',
-        params: { top: 175, left: 165, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 163, left: 266, angle: 0, scaleX: 1, scaleY: 1 }
     },
     {
         target: 'mouth',
-        params: { top: 255, left: 160, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 249, left: 261, angle: 0, scaleX: 1, scaleY: 1 }
     },
     {
         target: 'eye_l',
-        params: { top: 115, left: 195, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 150, left: 312, angle: 0, scaleX: 1, scaleY: 1 }
     },
     {
         target: 'eye_r',
-        params: { top: 125, left: 123, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 145, left: 203, angle: 0, scaleX: 1, scaleY: 1 }
     },
     {
         target: 'cheek_l',
-        params: { top: 85, left: 195, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 199, left: 173, angle: 0, scaleX: 1, scaleY: 1 }
     },
     {
         target: 'cheek_r',
-        params: { top: 95, left: 123, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 214, left: 326, angle: 0, scaleX: 1, scaleY: 1 }
     },
     {
         target: 'arm_l',
-        params: { top: 85, left: 195, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 154, left: 429, angle: 0, scaleX: 1, scaleY: 1 }
     },
     {
         target: 'arm_r',
-        params: { top: 95, left: 123, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 173, left: 6, angle: 0, scaleX: 1, scaleY: 1 }
     },
     {
         target: 'leg_l',
-        params: { top: 85, left: 195, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 539, left: 342, angle: 0, scaleX: 1, scaleY: 1 }
     },
     {
         target: 'leg_r',
-        params: { top: 95, left: 123, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 545, left: 219, angle: 0, scaleX: 1, scaleY: 1 }
     },
     {
         target: 'body',
@@ -55,7 +55,7 @@ var defaultPositions = JSON.stringify([
     },
     {
         target: 'head',
-        params: { top: 30, left: 133, angle: 0, scaleX: 1, scaleY: 1 }
+        params: { top: 10, left: 134, angle: 0, scaleX: 1, scaleY: 1 }
     }
 ]);
 
