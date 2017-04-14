@@ -2,6 +2,7 @@ var express = require('express');
 var app     = express();
 var http    = require('http').Server(app);
 var io      = require('socket.io')(http);
+var ECT     = require('ect');
 
 // ディープコピーが簡単なように JSON で取り扱う
 var defaultPositions = JSON.stringify([
@@ -107,11 +108,22 @@ io.on('connection', function(socket){
 
 // Web サーバーの設定 -----------------------------------------------
 
+// app 配下の静的ファイルをホスティング
+app.use(express.static('app'));
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/app/index.html');
 });
 
-// app 配下の静的ファイルをホスティング
-app.use(express.static('app'));
+
+var ectRenderer = ECT({ watch: true, ext: '.ect' });
+app.set('views', 'app/views')
+app.set('view engine', 'ect')
+app.engine('ect', ectRenderer.render);
+
+app.get('/:snapshot_id', function(req, res){
+    // res.render("snapshot", {title: req.params.snapshot_id});
+    res.render("snapshot", {positions: JSON.parse(defaultPositions)});
+});
+
 
 http.listen(3000);

@@ -13,10 +13,18 @@ gulp.task('browserify', function() {
   browserify('./src/js/main.js', { debug: true })
     .transform(babelify)
     .bundle().on("error", function(err){console.log("Error : " + err.message);})
-    .pipe(source('app.min.js'))
+    .pipe(source('main.min.js'))
     .pipe(buffer())
     .pipe(uglify())
-    .pipe(gulp.dest('./app/js/'))
+    .pipe(gulp.dest('./app/js/'));
+
+  browserify('./src/js/snapshot.js', { debug: true })
+    .transform(babelify)
+    .bundle().on("error", function(err){console.log("Error : " + err.message);})
+    .pipe(source('snapshot.min.js'))
+    .pipe(buffer())
+    .pipe(uglify())
+    .pipe(gulp.dest('./app/js/'));
 });
 
 gulp.task('css', function () {

@@ -25,14 +25,11 @@
     <img src="img/leg_l.png" id="leg_l" style="display:none;">
     <img src="img/leg_r.png" id="leg_r" style="display:none;">
     <canvas id="canvas" width="1000" height="600"></canvas>
-    <div>
-      <button type="button" id="reset_button">リセット</button>
-    </div>
     <a href="http://commons.nicovideo.jp/search/tag/%E9%AC%BC%E3%81%A0%E3%81%8F%E3%82%93" target="_blank"><img src="img/motoLogo.png" class="logo" alt="画像の元ネタ（ニコニ・コモンズ）"></a>
     <a href="http://com.nicovideo.jp/community/co17194" target="_blank"><img src="img/aseLogo.png" class="logo" alt="汗だく実況プレイ"></a>
     <a href="https://github.com/megane42/onidaku_fukuwarai" target="_blank"><img src="img/githubLogo.png" class="logo" alt="github"></a>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="js/main.min.js"></script>
+    <script type="text/javascript">var positions = <%- JSON.stringify(@positions) %></script>
+    <script src="js/snapshot.min.js"></script>
   </body>
 </html>
