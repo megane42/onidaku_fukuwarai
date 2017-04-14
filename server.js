@@ -94,10 +94,17 @@ io.on('connection', function(socket){
     });
 
     // 誰かがスナップショットボタンを押したとき
-    socket.on('snapshot_taken', function(){
+    socket.on('snapshot_taken', function(z_indicies){
+
+        var sorted_pos = [];
+        positions.forEach(function(pos){
+            var idx = z_indicies[pos.target];
+            sorted_pos[idx] = pos;
+        });
+
         var unixtime = (new Date()).getTime();
         // 現在のパーツ位置を保存
-        fs.writeFile(unixtime + '.json', JSON.stringify(positions));
+        fs.writeFile(unixtime + '.json', JSON.stringify(sorted_pos));
         // 動かした本人だけをスナップショット画面に誘導
         socket.emit('redirect_to_snapshot', unixtime);
     });
@@ -136,10 +143,9 @@ app.get('/', function(req, res){
 app.get('/snapshot/:snapshot_id', function(req, res){
     fs.readFile(req.params.snapshot_id + '.json', function(err, data) {
         if (err) {
-            res.redirect("/");
-        } else {
-            res.render("snapshot", {positions: JSON.parse(data)});
+            return res.redirect("/");
         }
+        res.render("snapshot", {positions: JSON.parse(data)});
     });
 });
 
