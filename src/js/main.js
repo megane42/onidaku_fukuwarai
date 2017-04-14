@@ -15,6 +15,15 @@ window.onload = function() {
                 if(name != 'body' && name != 'head') {
                     img.bringToFront();
                 }
+
+
+                console.log('===============');
+                console.log(name);
+                console.log(img.getTop());
+                console.log(img.getLeft());
+
+
+
                 socket.emit('part_change', {
                     target: name,
                     params: {
