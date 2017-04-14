@@ -44,7 +44,15 @@ window.onload = function() {
         canvas.renderAll();
     });
 
+    socket.on('redirect_to_snapshot', function(snapshot_id){
+        window.open('/snapshot/' + snapshot_id, '_blank');
+    });
+
     document.getElementById('reset_button').onclick = function(){
         socket.emit('parts_reset');
+    };
+
+    document.getElementById('snapshot_button').onclick = function(){
+        socket.emit('snapshot_taken');
     };
 };

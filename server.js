@@ -3,6 +3,7 @@ var app     = express();
 var http    = require('http').Server(app);
 var io      = require('socket.io')(http);
 var ECT     = require('ect');
+var fs      = require('fs');
 
 // ディープコピーが簡単なように JSON で取り扱う
 var defaultPositions = JSON.stringify([
@@ -83,13 +84,22 @@ io.on('connection', function(socket){
     });
 
     // 誰かがリセットボタンを押したとき
-    socket.on('parts_reset', function(data){
+    socket.on('parts_reset', function(){
         // positions をデフォルトに戻す
         positions = JSON.parse(defaultPositions);
         // 全員にパーツ位置を送信
         positions.forEach(function(item) {
             io.emit('part_change', item);
         });
+    });
+
+    // 誰かがスナップショットボタンを押したとき
+    socket.on('snapshot_taken', function(){
+        var unixtime = (new Date()).getTime();
+        // 現在のパーツ位置を保存
+        fs.writeFile(unixtime + '.json', JSON.stringify(positions));
+        // 動かした本人だけをスナップショット画面に誘導
+        socket.emit('redirect_to_snapshot', unixtime);
     });
 });
 
@@ -114,15 +124,21 @@ app.get('/', function(req, res){
   res.sendFile(__dirname + '/app/index.html');
 });
 
-
+// テンプレートエンジンの設定
 var ectRenderer = ECT({ watch: true, ext: '.ect' });
 app.set('views', 'app/views')
 app.set('view engine', 'ect')
 app.engine('ect', ectRenderer.render);
 
-app.get('/:snapshot_id', function(req, res){
-    // res.render("snapshot", {title: req.params.snapshot_id});
-    res.render("snapshot", {positions: JSON.parse(defaultPositions)});
+// スナップショット画面のレンダリング
+app.get('/snapshot/:snapshot_id', function(req, res){
+    fs.readFile(req.params.snapshot_id + '.json', function(err, data) {
+        if (err) {
+            res.redirect("/");
+        } else {
+            res.render("snapshot", {positions: JSON.parse(data)});
+        }
+    });
 });
 
 
