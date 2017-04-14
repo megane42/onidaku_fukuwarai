@@ -7,6 +7,11 @@
     margin: 10px 10px;
 }
 
+#header {
+    width: 500px;
+    margin-bottom: 20px;
+}
+
 #reset_button {
     margin: 10px 0px;
 }
