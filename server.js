@@ -6,10 +6,6 @@ var io      = require('socket.io')(http);
 // ディープコピーが簡単なように JSON で取り扱う
 var defaultPositions = JSON.stringify([
     {
-        target: 'base',
-        params: { top: 0, left: 0, angle: 0, scaleX: 1, scaleY: 1 }
-    },
-    {
         target: 'nose',
         params: { top: 199, left: 278, angle: 0, scaleX: 1, scaleY: 1, originX: 'center', originY: 'center' }
     },
