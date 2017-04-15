@@ -2,16 +2,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
-  <% include "app/views/head" %>
+  <% include head %>
   <body class="bg">
-    <% include "app/views/body" %>
+    <% include body %>
 
     <div>
       <button type="button" id="reset_button">リセット</button>
       <button type="button" id="snapshot_button">スナップショット</button>
     </div>
 
-    <% include "app/views/footer" %>
+    <% include footer %>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.5.0/fabric.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/main.min.js"></script>

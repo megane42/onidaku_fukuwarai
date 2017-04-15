@@ -16,10 +16,12 @@ window.onload = function() {
 
         ['moving', 'scaling', 'rotating'].forEach(function(event) {
             img.on(event, function() {
+
                 // 大きいパーツはクリックしても最前面に来ないようにする
                 if(name != 'body' && name != 'head') {
                     img.bringToFront();
                 }
+
                 socket.emit('part_change', {
                     target: name,
                     params: {
@@ -40,11 +42,11 @@ window.onload = function() {
         socket.emit('part_loaded', name);
     });
 
-    socket.on('part_change', function(data){
-        parts[data.target].set(data.params);
-        parts[data.target].setCoords();
-        if(data.target != 'body' && data.target != 'head') {
-            parts[data.target].bringToFront();
+    socket.on('part_change', function(target, params){
+        parts[target].set(params);
+        parts[target].setCoords();
+        if(target != 'body' && target != 'head') {
+            parts[target].bringToFront();
         }
         canvas.renderAll();
     });
