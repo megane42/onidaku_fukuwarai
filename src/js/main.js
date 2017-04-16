@@ -16,12 +16,7 @@ window.onload = function() {
 
         ['moving', 'scaling', 'rotating'].forEach(function(event) {
             img.on(event, function() {
-
-                // 大きいパーツはクリックしても最前面に来ないようにする
-                if(name != 'body' && name != 'head') {
-                    img.bringToFront();
-                }
-
+                img.bringToFront();
                 socket.emit('part_change', {
                     target: name,
                     params: {
@@ -45,9 +40,7 @@ window.onload = function() {
     socket.on('part_change', function(target, params){
         parts[target].set(params);
         parts[target].setCoords();
-        if(target != 'body' && target != 'head') {
-            parts[target].bringToFront();
-        }
+        parts[target].bringToFront();
         canvas.renderAll();
     });
 
