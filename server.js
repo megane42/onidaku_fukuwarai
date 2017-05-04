@@ -64,19 +64,6 @@ io.on('connection', function(socket){
     });
 });
 
-// 本番向け socket.io の設定 ----------------------------------------
-
-// io.enable('browser client minification');  // minified されたクライアントファイルを送信する
-// io.enable('browser client etag');          // バージョンによって etag によるキャッシングを有効にする
-// io.set('log level', 1);                    // ログレベルを設定(デフォルトより下げている)
-// io.set('transports', [                     // 全てのtransportを有効にする
-//     'websocket',
-//     'flashsocket',
-//     'htmlfile',
-//     'xhr-polling',
-//     'jsonp-polling'
-// ]);
-
 // Web サーバーの設定 -----------------------------------------------
 
 // app 配下の静的ファイルをホスティング
