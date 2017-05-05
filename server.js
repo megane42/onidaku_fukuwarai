@@ -3,6 +3,7 @@ var app     = express();
 var http    = require('http').Server(app);
 var io      = require('socket.io')(http);
 var fs      = require('fs');
+var mongo   = require('./mongo');
 
 // ディープコピーが簡単なように JSON で取り扱う
 var defaultPositions = JSON.stringify({
@@ -51,16 +52,22 @@ io.on('connection', function(socket){
 
     // 誰かがスナップショットボタンを押したとき
     socket.on('snapshot_taken', function(z_indicies){
-
+        // Z座標情報を保存
         for (name in z_indicies) {
             positions[name]['z_index'] = z_indicies[name];
         }
 
         var unixtime = (new Date()).getTime();
-        // 現在のパーツ位置を保存
-        fs.writeFile('/var/tmp/onifuku_' + unixtime + '.json', JSON.stringify(positions));
-        // 動かした本人だけをスナップショット画面に誘導
-        socket.emit('redirect_to_snapshot', unixtime);
+
+        // 現在のパーツ位置を外部に保存
+        mongo.insertDocument(Object.assign({'timestamp': unixtime}, positions), function(err, result){
+            if (err !== null) {
+                console.log(err);
+            } else {
+                // 保存に成功したら、動かした本人だけをスナップショット画面に誘導
+                socket.emit('redirect_to_snapshot', unixtime);
+            }
+        });
     });
 });
 
@@ -80,11 +87,13 @@ app.get('/', function(req, res){
 
 // スナップショット画面のレンダリング
 app.get('/snapshot/:snapshot_id', function(req, res){
-    fs.readFile('/var/tmp/onifuku_' + req.params.snapshot_id + '.json', function(err, data) {
-        if (err) {
+    var unixtime = parseInt(req.params.snapshot_id);
+    mongo.findDocumentByTimestamp((unixtime), function(err, result){
+        if (err !== null) {
+            console.log(err);
             return res.redirect("/");
         }
-        res.render("snapshot", {positions: JSON.parse(data)});
+        res.render("snapshot", {positions: result});
     });
 });
 
