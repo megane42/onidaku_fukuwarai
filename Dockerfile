@@ -3,7 +3,6 @@ MAINTAINER megane42
 
 RUN git clone https://github.com/megane42/onidaku_fukuwarai.git /var/onidaku_fukuwarai
 WORKDIR /var/onidaku_fukuwarai
-RUN git checkout snapshot
 RUN npm install
 
 EXPOSE 3000
