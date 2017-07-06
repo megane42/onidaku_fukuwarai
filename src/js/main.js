@@ -45,6 +45,7 @@ window.onload = function() {
     });
 
     socket.on('redirect_to_snapshot', function(snapshot_id){
+        document.getElementById('loading').style.display = 'none';
         window.open('/snapshot/' + snapshot_id, '_blank');
     });
 
@@ -53,6 +54,7 @@ window.onload = function() {
     };
 
     document.getElementById('snapshot_button').onclick = function(){
+        document.getElementById('loading').style.display = 'block';
         var z_indicies = {};
         partsList.forEach(function(name) {
             z_indicies[name] = parts[name].getZIndex();
